@@ -1,5 +1,5 @@
 
-export default interface StarshipMappedData {
+export default interface Starship {
   nombre: string;
   modelo: string;
   fabricante: string;
@@ -12,8 +12,8 @@ export default interface StarshipMappedData {
   consumibles: string;
   clasificacion_nave: string;
   pilotos: string[];
-  peliculas: string[];
-  creado: string;
-  editado: string;
-  url: string;
+  peliculas?: string[];
+  creado?: string;
+  editado?: string;
+  url?: string;
 }

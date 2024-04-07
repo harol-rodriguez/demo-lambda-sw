@@ -1,8 +1,9 @@
-import StarshipMappedData from '../../interfaces/StarshipMappedData.interface';
+
+import Starship from '../../interfaces/Starship.interface';
 import { ExternalApiResponse } from '../entities/ExternalApiResponse';
 
 export class StarshipMapper {
-  static mapToSpanish(apiResponse: ExternalApiResponse): StarshipMappedData[]  {
+  static mapToSpanish(apiResponse: ExternalApiResponse): Starship[]  {
     return apiResponse.results.map((starship) => ({
       nombre: starship.name,
       modelo: starship.model,
