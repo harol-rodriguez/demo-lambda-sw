@@ -1,0 +1,28 @@
+{
+  "name": "aws-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "serverless offline",
+    "deploy": "serverless deploy",
+    "start": "serverless offline start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-dynamodb-local": "^0.2.30",
+    "uuid": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.137",
+    "esbuild": "^0.20.2",
+    "serverless": "^3.38.0",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-offline": "^13.3.3",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.4.4"
+  }
+}
