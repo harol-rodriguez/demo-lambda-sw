@@ -35,6 +35,13 @@ functions:
           path: /starship
           method: post
 
+  listStarship:
+    handler: src/infrastructure/controllers/GetAllStarshipsController.getAllStarShips
+    events:
+      - httpApi: 
+          path: /starship
+          method: get
+
 custom:
   esbuild:
     bundle: true
