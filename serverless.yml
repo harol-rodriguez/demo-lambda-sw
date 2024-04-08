@@ -5,6 +5,13 @@ useDotenv: true
 provider:
   name: aws
   runtime: nodejs20.x
+  region: 'us-east-1'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:580352614414:table/swdemoTable
 
 functions:
   hello:
@@ -21,6 +28,13 @@ functions:
           path: /swdemo
           method: get
 
+  addStarship:
+    handler: src/infrastructure/controllers/SaveStarshipController.saveStarship
+    events:
+      - httpApi: 
+          path: /starship
+          method: post
+
 custom:
   esbuild:
     bundle: true
@@ -31,18 +45,18 @@ plugins:
   # - serverless-dynamodb-local
   - serverless-offline
  
-# resources: # CloudFormation template syntax
-#   Resources:
-#     usersTable:
-#       Type: AWS::DynamoDB::Table
-#       Properties:
-#         TableName: usersTable
-#         AttributeDefinitions:
-#           - AttributeName: email
-#             AttributeType: S
-#         KeySchema:
-#           - AttributeName: email
-#             KeyType: HASH
-#         ProvisionedThroughput:
-#           ReadCapacityUnits: 1
-#           WriteCapacityUnits: 1
+resources:
+  Resources:
+    swdemo:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: swdemoTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

@@ -1,21 +1,42 @@
-// import { DynamoDBAdapter } from '../../infrastructure/dataSources/DynamoDBAdapter'; // Adaptador para DynamoDB
-// import Starship from '../../interfaces/Starship.interface';
 
+import { DynamoDBAdapter } from '../../infrastructure/datasources/DynamoDBAdapter';
+import Starship from '../../interfaces/Starship.interface';
 
-// export class StarshipRepository {
-//   private readonly tableName = 'Starships'; // Nombre de la tabla en DynamoDB
+export class StarshipRepository {
+  private readonly tableName = 'swdemoTable';
+  private readonly db: DynamoDBAdapter;
 
-//   constructor(private readonly db: DynamoDBAdapter) {}
+  constructor() {
+    // try {
+    //   this.db = new DynamoDBAdapter();
+    // } catch (error) {
+    //   console.error('Error al inicializar DynamoDBAdapter:', error);
+    //   throw error;
+    // }
+  }
 
-//   async save(starship: Starship): Promise<Starship> {
-//     // Lógica para guardar la nave en DynamoDB
-//     // Utiliza el atributo 'created' para establecer la fecha de creación
-//     // Utiliza el atributo 'edited' para establecer la fecha de edición
-//     // Retorna la nave guardada
-//   }
+  async save(starship: Starship): Promise<Starship> {
+    const params = {
+      TableName: this.tableName,
+      Item: starship,
+    };
+  
+    try {
+      await this.db.save(params.TableName, params.Item);
+      return starship;
+    } catch (error) {
+      console.error('Error al guardar la nave:', error);
+      throw error;
+    }
+  }
 
-//   async getAll(): Promise<Starship[]> {
-//     // Lógica para obtener todas las naves de DynamoDB
-//     // Retorna un array de naves
-//   }
-// }
+  async getAll(): Promise<Starship[]> {
+    try {
+      const result = await this.db.getAll(this.tableName);
+      return result as Starship[];
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+      throw error;
+    }
+  }
+}

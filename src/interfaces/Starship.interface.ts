@@ -13,7 +13,7 @@ export default interface Starship {
   clasificacion_nave: string;
   pilotos: string[];
   peliculas?: string[];
-  creado?: string;
-  editado?: string;
+  creado?: Date;
+  editado?: Date;
   url?: string;
 }

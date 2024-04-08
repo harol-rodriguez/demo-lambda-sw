@@ -1,17 +1,16 @@
-// // src/app/useCases/saveStarshipData/SaveStarshipDataUseCase.ts
+import Starship from '../../../interfaces/Starship.interface';
+import { StarshipRepository } from '../../repositories/StarshipRepository';
 
-// import StarshipMappedData from '../../../interfaces/StarshipMappedData.interface';
-// import { StarshipRepository } from '../../repositories/StarshipRepository';
+export class SaveStarshipDataUseCase {
+  constructor(private readonly starshipRepository: StarshipRepository) {}
 
+  async execute(starshipData: any): Promise<Starship> {
+    const currentDate = new Date();
+    const starship: Starship = starshipData;
+    starship.creado = currentDate;
+    starship.editado = currentDate;
 
-// export class SaveStarshipDataUseCase {
-//   constructor(private readonly starshipRepository: StarshipRepository) {}
-
-//   static async execute(starshipData: any): Promise<StarshipMappedData> {
-//     const currentDate = new Date();
-//     const starship = new Starship(starshipData);
-//     starship.created = currentDate;
-//     starship.edited = currentDate;
-//     return this.starshipRepository.save(starship);
-//   }
-// }
+    console.log("SaveStarshipDataUseCase", starship);
+    return this.starshipRepository.save(starship);
+  }
+}

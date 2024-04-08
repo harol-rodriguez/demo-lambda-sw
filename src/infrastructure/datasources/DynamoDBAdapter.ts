@@ -1,19 +1,39 @@
-// import * as AWS from 'aws-sdk';
+import * as AWS from 'aws-sdk';
 
-// export class DynamoDBAdapter {
-//   private readonly client: AWS.DynamoDB.DocumentClient;
+export class DynamoDBAdapter {
+  private readonly client: AWS.DynamoDB.DocumentClient;
 
-//   constructor() {
-//     this.client = new AWS.DynamoDB.DocumentClient();
-//   }
+  constructor() {
+    this.client = new AWS.DynamoDB.DocumentClient();
+  }
 
-//   async save(tableName: string, item: any): Promise<any> {
-//     // Lógica para guardar un item en la tabla especificada
-//     // Retorna el item guardado
-//   }
+  async save(tableName: string, item: any): Promise<any> {
+    const params = {
+      TableName: tableName,
+      Item: item,
+    };
+  
+    try {
+      await this.client.put(params).promise();
+      console.error('adapter item', params);
+      return item; // Retorna el item guardado
+    } catch (error) {
+      console.error('Error al guardar el dato:', error);
+      throw error;
+    }
+  }
 
-//   async getAll(tableName: string): Promise<any[]> {
-//     // Lógica para obtener todos los items de la tabla especificada
-//     // Retorna un array de items
-//   }
-// }
+  async getAll(tableName: string): Promise<any[]> {
+    const params = {
+      TableName: tableName,
+    };
+
+    try {
+      const result = await this.client.scan(params).promise();
+      return result.Items || [];
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+      throw error;
+    }
+  }
+}
