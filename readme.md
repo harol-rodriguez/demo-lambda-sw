@@ -80,42 +80,44 @@ AWS-DEMO/
 
 ### Endpoints
 
-- **GET /hello**
-Este es un ejemplo de endpoint. No realiza ninguna acción significativa, pero se utiliza para verificar que el servicio esté en funcionamiento.
-Puedes acceder a él aquí.
+  - **GET /hello**
+  Este es un ejemplo de endpoint. No realiza ninguna acción significativa, pero se utiliza para verificar que el servicio esté en funcionamiento.
+  `GET`[https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/hello](https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/hello)
 
-- **GET /swdemo**
-Este endpoint obtiene el listado de naves espaciales desde SWAPI y devuelve un objeto mapeado con los atributos traducidos al español.
-Puedes acceder a él aquí.
+  - **GET /swdemo**
+  Este endpoint obtiene el listado de naves espaciales desde SWAPI y devuelve un objeto mapeado con los atributos traducidos al español.
+  `GET`[https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/swdemo](https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/swdemo)
 
-- **POST /starship**
-Este endpoint crea una nueva nave espacial. Puede recibir un objeto JSON como el siguiente ejemplo:
+  - **POST /starship**
+  Este endpoint crea una nueva nave espacial. Puede recibir un objeto JSON como el siguiente ejemplo:
 
-```json
-{
-    "nombre": "CR90 corvette",
-    "modelo": "CR90 corvette",
-    "fabricante": "Corellian Engineering Corporation",
-    "costo_en_creditos": "3500000",
-    "longitud": "150",
-    "velocidad_maxima_atmosfera": "950",
-    "tripulacion": "30-165",
-    "pasajeros": "600",
-    "capacidad_carga": "3000000",
-    "consumibles": "1 year",
-    "clasificacion_nave": "corvette",
-    "pilotos": [],
-    "peliculas": [
-        "https://swapi.py4e.com/api/films/1/",
-        "https://swapi.py4e.com/api/films/3/",
-        "https://swapi.py4e.com/api/films/6/"
-    ],
-    "creado": "2014-12-10T14:20:33.369000Z",
-    "editado": "2014-12-20T21:23:49.867000Z",
-    "url": "https://swapi.py4e.com/api/starships/2/"
-}
-```
+    ```json
+    {
+        "nombre": "CR90 corvette",
+        "modelo": "CR90 corvette",
+        "fabricante": "Corellian Engineering Corporation",
+        "costo_en_creditos": "3500000",
+        "longitud": "150",
+        "velocidad_maxima_atmosfera": "950",
+        "tripulacion": "30-165",
+        "pasajeros": "600",
+        "capacidad_carga": "3000000",
+        "consumibles": "1 year",
+        "clasificacion_nave": "corvette",
+        "pilotos": [],
+        "peliculas": [
+            "https://swapi.py4e.com/api/films/1/",
+            "https://swapi.py4e.com/api/films/3/",
+            "https://swapi.py4e.com/api/films/6/"
+        ],
+        "creado": "2014-12-10T14:20:33.369000Z",
+        "editado": "2014-12-20T21:23:49.867000Z",
+        "url": "https://swapi.py4e.com/api/starships/2/"
+    }
+    ```
+    `POST`[https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/starship](https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/starship)
 
 
-- **GET /starship**
-Este endpoint obtiene todas las naves espaciales almacenadas en el sistema. Puedes acceder a él aquí.
+  - **GET /starship**
+  Este endpoint obtiene todas las naves espaciales almacenadas en el sistema.
+  `GET`[https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/starship](https://ots8nz2gr1.execute-api.us-east-1.amazonaws.com/starship)
